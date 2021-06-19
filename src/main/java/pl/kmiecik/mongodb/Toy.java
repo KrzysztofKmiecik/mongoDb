@@ -3,6 +3,8 @@ package pl.kmiecik.mongodb;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.StringJoiner;
+
 @Document
 public class Toy {
     @Id
@@ -40,5 +42,14 @@ public class Toy {
 
     public void setType(ToyType type) {
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", Toy.class.getSimpleName() + "[", "]")
+                .add("id='" + id + "'")
+                .add("name='" + name + "'")
+                .add("type=" + type)
+                .toString();
     }
 }
